@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 7069f5675e6d66bd8eb433ecf8502658a5770c50
 # Amazon Redshift
 
 sth special
