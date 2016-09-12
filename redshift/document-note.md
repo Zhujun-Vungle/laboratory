@@ -1,4 +1,3 @@
-# 在此处输入标题
 
 # Amazon Redshift
 
