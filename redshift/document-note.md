@@ -49,5 +49,5 @@ and table_attributes are:
 - DISTSTYLE { EVEN | KEY | ALL } Defines the data distribution style for the whole table. Amazon Redshift distributes the rows of a table to the compute nodes according the distribution style specified for the table.
 
  > - EVEN: The data in the table is spread evenly across the nodes in a cluster in a round-robin distribution. 
-   - KEY: The data is distributed by the values in the DISTKEY column. when you set the join columns as distkey, the join will be more efficiency
-   - ALL: distribute entire table to every node. kind of spark brodcast table.
+  - KEY: The data is distributed by the values in the DISTKEY column. when you set the join columns as distkey, the join will be more efficiency
+  - ALL: distribute entire table to every node. kind of spark brodcast table.
