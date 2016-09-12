@@ -1,5 +1,3 @@
-# 在此处输入标题
-
 # Amazon Redshift
 
 sth special
@@ -48,4 +46,7 @@ and table_attributes are:
 - UNIQUE
 - PRIMARY KEY
 - LIKE parent_table [ { INCLUDING | EXCLUDING } DEFAULTS ] A clause that specifies an existing table from which the new table automatically copies column names, data types, and NOT NULL constraints. The new table and the parent table are decoupled, and any changes made to the parent table are not applied to the new table. 
-
+- DISTSTYLE { EVEN | KEY | ALL } Defines the data distribution style for the whole table. Amazon Redshift distributes the rows of a table to the compute nodes according the distribution style specified for the table.
+ > - EVEN: The data in the table is spread evenly across the nodes in a cluster in a round-robin distribution. 
+- KEY: The data is distributed by the values in the DISTKEY column. when you set the join columns as distkey, the join will be more efficiency
+- ALL: distribute entire table to every node. kind of spark brodcast table.
