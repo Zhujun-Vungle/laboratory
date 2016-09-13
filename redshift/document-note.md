@@ -104,6 +104,16 @@ and table_attributes are:
 - Text255 and Text32k Encodings
 > Text255 and text32k encodings are useful for compressing **VARCHAR** columns in which the **same words recur often**. A separate dictionary of unique words is created for each block of column values on disk. (An Amazon Redshift disk block occupies 1 MB.) The dictionary contains the first 245 unique words in the column. 
 
+#### Data Distribution
+
+- Nodes and slices
+> An Redshift cluster is a set of nodes. One node is leader node, which manage the distribute data and query processing tasks to the compute nodes.
+The disk storge for a compute node is divided into number of slices.  **The number of slices per node depends on the node size of the cluster**. 
+The nodes all participate in parallel query execution, working on data that is distributed as evenly as possible across the **slices**.
+
+- Data redistribution
+> when you load data into a table, Redshift distributes the rows of the table to each of the nodes slices according to the table's distribution style(key/all/...).
+ As part of a query plan, The data is then physically moved, or redistributed during execution.
 
   [1]: http://static.zybuluo.com/ZeoJun/d3dhux61k5aif3z3pyjj1cmc/Screen%20Shot%202016-09-13%20at%203.27.45%20PM.png
   [2]: http://static.zybuluo.com/ZeoJun/hacyexn4u7u8cifd8bc8me8e/Screen%20Shot%202016-09-13%20at%203.52.00%20PM.png
