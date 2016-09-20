@@ -49,3 +49,4 @@ cqlsh:zj> select * from users;
 (1 rows)
 ```
 
+####work with list,set
