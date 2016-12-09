@@ -8,15 +8,15 @@ func f1(arg int) (int, error) {
 		return -1, errors.New("can't work with 42")
 	}
 
-	return arg+3, nil
+	return arg + 3, nil
 }
 
 type argError struct {
-	arg int
+	arg  int
 	prob string
 }
 
-func (e *argError) Error() string  {
+func (e *argError) Error() string {
 	return fmt.Sprintf("%d - %s", e.arg, e.prob)
 }
 

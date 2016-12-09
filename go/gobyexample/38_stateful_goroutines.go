@@ -8,13 +8,13 @@ import (
 )
 
 type readOp struct {
-	key int
+	key  int
 	resp chan int
 }
 
 type writeOp struct {
-	key int
-	val int
+	key  int
+	val  int
 	resp chan bool
 }
 

@@ -1,5 +1,7 @@
 package main
+
 import "fmt"
+
 //In this example we’ll use a jobs channel to communicate work to be done from the main() goroutine to a worker goroutine. When we have no more jobs for the worker we’ll close the jobs channel.
 func main() {
 	jobs := make(chan int, 5)

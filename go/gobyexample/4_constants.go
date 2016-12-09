@@ -1,4 +1,4 @@
-package main 
+package main
 
 import "fmt"
 import "math"
@@ -10,7 +10,7 @@ func main() {
 
 	const n = 50000000000
 
-	const d = 3e20/n
+	const d = 3e20 / n
 
 	fmt.Println(d)
 

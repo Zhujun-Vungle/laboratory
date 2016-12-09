@@ -1,4 +1,4 @@
-package main 
+package main
 
 import "fmt"
 
@@ -17,7 +17,7 @@ func main() {
 	sum()
 	sum(1)
 	sum(1, 2, 3)
-    
-    nums := []int{1, 2, 3, 4}
-    sum(nums...)
+
+	nums := []int{1, 2, 3, 4}
+	sum(nums...)
 }

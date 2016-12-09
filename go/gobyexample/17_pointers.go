@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func zeroval(ival int)  {
+func zeroval(ival int) {
 	ival = 0
 }
 
@@ -22,4 +22,3 @@ func main() {
 
 	fmt.Println("pointer:", &i)
 }
-

@@ -1,4 +1,5 @@
 package main
+
 import (
 	"fmt"
 	"math/rand"
@@ -7,6 +8,7 @@ import (
 	"sync/atomic"
 	"time"
 )
+
 func main() {
 	//For our example the state will be a map.
 	var state = make(map[int]int)
@@ -26,11 +28,11 @@ func main() {
 				mutex.Unlock()
 				atomic.AddInt64(&ops, 1)
 				//In order to ensure that this goroutine doesn’t starve the scheduler, we explicitly yield after each operation with runtime.Gosched(). This yielding is handled automatically with e.g. every channel operation and for blocking calls like time.Sleep, but in this case we need to do it manually.
-                                runtime.Gosched()
+				runtime.Gosched()
 			}
 		}()
-        }
-//We’ll also start 10 goroutines to simulate writes, using the same pattern we did for reads.
+	}
+	//We’ll also start 10 goroutines to simulate writes, using the same pattern we did for reads.
 	for w := 0; w < 10; w++ {
 		go func() {
 			for {

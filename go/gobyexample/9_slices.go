@@ -1,9 +1,9 @@
-package main 
+package main
 
 import "fmt"
 
 func main() {
-	
+
 	s := make([]string, 3)
 	fmt.Println("emp:", s)
 
@@ -21,7 +21,7 @@ func main() {
 
 	c := make([]string, len(s))
 	copy(c, s)
-	fmt.Println("cpy:",c)
+	fmt.Println("cpy:", c)
 
 	fmt.Println(s[2:5])
 	fmt.Println(s[:5])
@@ -31,12 +31,12 @@ func main() {
 	fmt.Println("dcl:", t)
 
 	twoD := make([][]int, 3)
-    for i := 0; i < 3; i++ {
-        innerLen := i + 1
-        twoD[i] = make([]int, innerLen)
-        for j := 0; j < innerLen; j++ {
-            twoD[i][j] = i + j
-        }
-    }
-    fmt.Println("2d: ", twoD)
+	for i := 0; i < 3; i++ {
+		innerLen := i + 1
+		twoD[i] = make([]int, innerLen)
+		for j := 0; j < innerLen; j++ {
+			twoD[i][j] = i + j
+		}
+	}
+	fmt.Println("2d: ", twoD)
 }

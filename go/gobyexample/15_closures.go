@@ -1,4 +1,4 @@
-package main 
+package main
 
 import "fmt"
 
@@ -11,7 +11,7 @@ func intSeq() func() int {
 }
 
 func main() {
-	
+
 	nextInt := intSeq()
 
 	fmt.Println(nextInt())
@@ -19,5 +19,5 @@ func main() {
 	fmt.Println(nextInt())
 
 	newInts := intSeq()
-    fmt.Println(newInts())
+	fmt.Println(newInts())
 }
