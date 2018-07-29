@@ -2,6 +2,9 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark._
 import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming._
+import org.apache.spark.streaming.kafka.HasOffsetRanges
+
+import scala.concurrent.{Await, Future}
 
 /**
   * Created by huiqiangliu on 15/7/28.
@@ -49,14 +52,22 @@ object SparkStreamTest {
           case e: Exception => println("we catch this new exception aaaaa"); println(e)
         }
       }
-
   }
 
   def processBatch(ssc: StreamingContext, rdd: RDD[String], index: Int): Unit = {
     println("begin process batch " + index)
     rdd.foreach { s =>
       println(index.toString + " = " + s)
+
+
     }
+
+    val res = rdd.asInstanceOf[HasOffsetRanges].offsetRanges.groupBy(_.topic)
+
+
+    println("-----")
+    println(res)
+    println("-----")
 //    if (index % 2 == 0) {
 ////      throw new Exception(s"Fatal error $index")
 //    }

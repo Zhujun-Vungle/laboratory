@@ -1,15 +1,18 @@
-/**
-  * Created by jun.zhu on 12/27/16.
-  */
-
-
-import com.typesafe.config.{Config, ConfigFactory}
-import org.apache.spark._
-import org.apache.spark.rdd.RDD
-import org.apache.spark.streaming._
+import scala.concurrent.Future
 
 object ScalaMain {
   def main(args: Array[String]): Unit = {
-    println("aloha")
+    var totalA = "hello"
+    val text = Future {
+      "na" * 16 + "BATMAN!!!"
+    }
+    text onSuccess {
+      case txt => totalA += txt.count(_ == 'a')
+    }
+    text onSuccess {
+      case txt => totalA += txt.count(_ == 'A')
+    }
+
+    println(totalA)
   }
 }
