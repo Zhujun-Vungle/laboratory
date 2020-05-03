@@ -1,0 +1,6 @@
+*.class
+*.log
+.idea/*
+.ivy2/*
+target/*
+project/target/*
