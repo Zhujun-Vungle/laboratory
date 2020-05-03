@@ -2,5 +2,5 @@
 *.log
 .idea/*
 .ivy2/*
-.target/*
+target/*
 project/target/*
