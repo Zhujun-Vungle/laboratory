@@ -152,7 +152,6 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.10.7 {default=[default(compile)]} => dependency: org.scala-lang#scala-reflect;2.10.7 {default=[default(compile)]}[0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.7 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.7 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
-[0m[[0mdebug[0m] [0mno default cache defined: set to /Users/jun.zhu/.ivy2/cache[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.10.7[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.7 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m	[2.10.7] org.scala-lang#scala-reflect;2.10.7[0m
@@ -210,6 +209,7 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.10.7 {default=[default(compile)]} => dependency: org.scala-lang#scala-reflect;2.10.7 {default=[default(compile)]}[0m
 [0m[[0minfo[0m] [0mResolving org.scala-sbt#interface;0.13.18 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-sbt#interface;0.13.18 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0mno default cache defined: set to /Users/jun.zhu/.ivy2/cache[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-sbt#interface;0.13.18[0m
 [0m[[0mdebug[0m] [0m	found org.scala-sbt#interface;0.13.18 in sbt-chain[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.10.7 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.7 {compile=[default(compile)]}[0m
@@ -2489,9 +2489,9 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.18!apply-macro.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.jboss.interceptor#jboss-interceptor-api;1.1!jboss-interceptor-api.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 298ms :: artifacts dl 13ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 418ms :: artifacts dl 27ms[0m
 [0m[[0mdebug[0m] [0m	report for default#spark_extensioons$sbt_2.10;0.1 default produced in /Users/jun.zhu/Documents/lab/laboratory/spark_extensioons/target/scala-2.12/resolution-cache/reports/default-spark_extensioons$sbt_2.10-default.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (298ms resolve - 13ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (418ms resolve - 27ms download)[0m
 [0m[[0mdebug[0m] [0mUsing inline dependencies specified in Scala.[0m
 [0m[[0mdebug[0m] [0m:: resolving dependencies :: default#spark_extensioons$sources_2.10;0.1[0m
 [0m[[0mdebug[0m] [0m	confs: [default][0m
@@ -3699,6 +3699,6 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#classpath;0.13.18!classpath.jar(src)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] javax.inject#javax.inject;1!javax.inject.jar(src)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.18!apply-macro.jar(src)[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 142ms :: artifacts dl 13ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 312ms :: artifacts dl 25ms[0m
 [0m[[0mdebug[0m] [0m	report for default#spark_extensioons$sources_2.10;0.1 default produced in /Users/jun.zhu/Documents/lab/laboratory/spark_extensioons/target/scala-2.12/resolution-cache/reports/default-spark_extensioons$sources_2.10-default.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (142ms resolve - 13ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (312ms resolve - 25ms download)[0m

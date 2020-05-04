@@ -5,7 +5,9 @@ name := "spark_extensioons"
 version := "0.1"
 
 scalaVersion := "2.12.10"
+
 resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
+resolvers += "Maven2 Repository" at "https://repository.mulesoft.org/nexus/content/repositories/public/"
 
 libraryDependencies ++= {
   val sparkV = "2.4.4"
@@ -15,6 +17,7 @@ libraryDependencies ++= {
     "org.apache.spark" %% "spark-sql" % sparkV,
     "org.apache.spark" %% "spark-catalyst" % sparkV,
     "org.apache.spark" %% "spark-core" % sparkV,
+    "com.amazon.redshift" % "redshift-jdbc42" % "1.2.41.1065",
 
 
     // typesafe

@@ -4,7 +4,7 @@
 		module="spark_extensioons$sbt_2.10"
 		revision="0.1"
 		status="integration"
-		publication="20200503205220"
+		publication="20200504171450"
 	/>
 	<configurations>
 		<conf name="default" visibility="public"/>

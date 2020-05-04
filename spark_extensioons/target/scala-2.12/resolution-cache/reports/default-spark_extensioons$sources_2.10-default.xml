@@ -7,7 +7,7 @@
 		revision="0.1"
 		conf="default"
 		confs="default"
-		date="20200503205223"/>
+		date="20200504171757"/>
 	<dependencies>
 		<module organisation="org.jetbrains" name="sbt-idea-shell">
 			<revision name="2018.3" status="release" pubdate="20181105205944" resolver="sbt-chain" artresolver="sbt-chain" extra-scalaVersion="2.10" extra-sbtVersion="0.13" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="71">
