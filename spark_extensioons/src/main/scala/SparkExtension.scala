@@ -17,11 +17,7 @@ object SparkExtension extends App {
 
     spark.withExtensions(_.injectParser((_, _) => CatalystSqlParser))
     val s = spark.getOrCreate()
-//    s.sessionState.experimentalMethods.extraStrategies
     println(s.sessionState.sqlParser)
-
-//    s.sqlContext.experimental.extraStrategies
-
 
     s.stop()
   }
