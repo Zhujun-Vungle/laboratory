@@ -17,7 +17,7 @@ object SparkJDBCRedshift {
                   url "jdbc:postgresql://dataeng-stage.c3livwoqjkry.us-east-1.redshift.amazonaws.com:5439/stage",
                   dbtable "idsp_transactions",
                   user 'root',
-                  password 'Ur#LpajYq7QCmLharkGX'
+                  password '*************'
               )
          """
 
