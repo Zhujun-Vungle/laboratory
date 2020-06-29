@@ -3,3 +3,5 @@
 - Using spark 3.0.0
 - Using minikube
 
+# Source 
+https://spark.apache.org/docs/3.0.0/running-on-kubernetes.html
