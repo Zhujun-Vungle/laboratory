@@ -13,7 +13,7 @@ libraryDependencies ++= {
   val sparkV = "2.4.4"
   Seq(
     // for structured streaming
-    "org.apache.spark" %% "spark-sql-kafka-0-10" % sparkV exclude("net.jpountz.lz4", "lz4"),
+//    "org.apache.spark" %% "spark-sql-kafka-0-10" % sparkV exclude("net.jpountz.lz4", "lz4"),
     "org.apache.spark" %% "spark-sql" % sparkV,
     "org.apache.spark" %% "spark-catalyst" % sparkV,
     "org.apache.spark" %% "spark-core" % sparkV,
