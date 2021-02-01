@@ -52,23 +52,25 @@ object SparkMain {
     val spark = SparkSession.builder.config(sparkConf).getOrCreate()
     while (startDate != endDate) {
       println(s"Processing last_updated_at date $startDate")
-
-      spark.read.parquet(s"$src/dt=$startDate/*/*").createOrReplaceTempView(temp_view)
-      spark.sql(
-        s"""
+      List("hr=00", "hr=01", "hr=02", "hr=03", "hr=04", "hr=05", "hr=06", "hr=07", "hr=08", "hr=09", "hr=10", "hr=11", "hr=12", "hr=13", "hr=14", "hr=15", "hr=16", "hr=17", "hr=18", "hr=19", "hr=20", "hr=21", "hr=22", "hr=23").foreach{
+        hr =>
+          spark.read.parquet(s"$src/dt=$startDate/$hr/*").createOrReplaceTempView(temp_view)
+          spark.sql(
+            s"""
             SELECT date_format(timestamp_at_auction, "y-MM-dd") AS dt,
                    date_format(timestamp_at_auction, "HH")      AS hr,
                    *
               FROM $temp_view
           """)
-        .coalesce(partitions_num)
-        .write
-        .format("parquet")
-        .mode("append")
-        .partitionBy("dt", "hr")
-        .save(dst)
+            .coalesce(partitions_num)
+            .write
+            .format("parquet")
+            .mode("append")
+            .partitionBy("dt", "hr")
+            .save(dst)
 
-      println(s"Saved data from $src/dt=$startDate to $dst")
+          println(s"Saved data from $src/dt=$startDate/$hr to $dst")
+      }
 
       startDate = startDate.plusDays(1)
     }
