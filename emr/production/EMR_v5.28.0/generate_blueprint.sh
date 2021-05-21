@@ -1,0 +1,114 @@
+#!/bin/bash
+
+if [[ -z ${AWS_ACCESS_KEY_ID} || -z ${AWS_SECRET_ACCESS_KEY} || -z ${RDS_METASTORE_USER} || -z ${RDS_METASTORE_PASS} ]]; then
+  echo 'Requirement environment variable not provided'
+  echo "Please check AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, RDS_METASTORE_USER, RDS_METASTORE_PASS"
+  exit 1
+fi
+
+cat > emr_blueprint.json << ENDOFCONFIGS
+[
+    {
+        "Classification": "spark-hive-site",
+        "Properties": {
+            "hive.exec.stagingdir": "/mnt2/spark/tmp/emr_staging",
+            "hive.metastore.uris": "thrift://172.19.111.189:9083",
+            "javax.jdo.option.ConnectionURL": "jdbc:mysql://dataeng-hos.c3b6y3gxzmds.us-east-1.rds.amazonaws.com:3306/prod_metastoredb",
+            "javax.jdo.option.ConnectionUserName": "${RDS_METASTORE_USER}",
+            "javax.jdo.option.ConnectionPassword": "${RDS_METASTORE_PASS}",
+            "hive.server2.thrift.worker.keepalive.time": "1800s",
+            "hive.server2.authentication": "NONE"
+        }
+    },
+    {
+        "Classification": "spark-env",
+        "Properties": {
+          
+        },
+        "Configurations": [
+          {
+            "Classification": "export",
+            "Properties": {
+              "HIVE_SERVER2_THRIFT_PORT": "9527"
+            },
+            "Configurations": [
+              
+            ]
+          }
+        ]
+    },
+    {
+        "Classification": "spark",
+        "Properties": {
+          "maximizeResourceAllocation": "true"
+        }
+    },
+    {
+        "Classification": "spark-defaults",
+        "Properties": {
+            "spark.scheduler.allocation.file": "s3a://vungle2-dataeng/builds/akkala/thriftserver/config/fairscheduler.xml",
+            "spark.hadoop.fs.s3a.access.key": "${AWS_ACCESS_KEY_ID}",
+            "spark.hadoop.fs.s3a.secret.key": "${AWS_SECRET_ACCESS_KEY}",
+            "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+            "spark.worker.cleanup.enabled": "true",
+            "spark.worker.cleanup.appDataTtl": "17280"
+        }
+    },
+    {
+        "Classification": "livy-conf",
+        "Properties": {
+            "livy.server.session.timeout":"168h"
+            }
+    },
+    {
+        "Classification": "yarn-site",
+        "Properties": {
+            "yarn.resourcemanager.am.max-attempts": "40",
+            "yarn.webapp.ui2.enable": "true",
+            "yarn.acl.enable": "true",
+            "yarn.resourcemanager.scheduler.class": "org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler"
+        }
+    },
+    {
+        "Classification": "capacity-scheduler",
+        "Properties": {
+            "yarn.scheduler.capacity.maximum-am-resource-percent": "0.4",
+            "yarn.scheduler.capacity.resource-calculator": "org.apache.hadoop.yarn.util.resource.DominantResourceCalculator",
+             "yarn.scheduler.capacity.root.queues": "default,olap,stream,batch",
+             "yarn.scheduler.capacity.root.default.capacity": "10",
+             "yarn.scheduler.capacity.root.default.user-limit-factor": "2",
+             "yarn.scheduler.capacity.root.olap.capacity": "40",
+             "yarn.scheduler.capacity.root.stream.capacity": "30",
+             "yarn.scheduler.capacity.root.batch.capacity": "20",
+             "yarn.scheduler.capacity.root.olap.user-limit-factor": "2",
+             "yarn.scheduler.capacity.root.stream.user-limit-factor": "2",
+             "yarn.scheduler.capacity.root.batch.user-limit-factor": "2",
+             "yarn.scheduler.capacity.root.olap.maximum-capacity": "100",
+             "yarn.scheduler.capacity.root.stream.maximum-capacity": "60",
+             "yarn.scheduler.capacity.root.batch.maximum-capacity": "50",
+             "yarn.scheduler.capacity.root.olap.state": "RUNNING",
+             "yarn.scheduler.capacity.root.stream.state": "RUNNING",
+             "yarn.scheduler.capacity.root.batch.state": "RUNNING",
+             "yarn.scheduler.capacity.root.olap.acl_submit_applications": "*",
+             "yarn.scheduler.capacity.root.stream.acl_submit_applications": "*",
+             "yarn.scheduler.capacity.root.batch.acl_submit_applications": "*",
+             "yarn.scheduler.capacity.root.accessible-node-labels":"CORE",
+             "yarn.scheduler.capacity.root.accessible-node-labels.CORE.capacity":"100",
+             "yarn.scheduler.capacity.root.accessible-node-labels.CORE.maximum-capacity":"100",
+             "yarn.scheduler.capacity.root.olap.accessible-node-labels":"CORE",
+             "yarn.scheduler.capacity.root.olap.accessible-node-labels.CORE.capacity":"20",
+             "yarn.scheduler.capacity.root.olap.accessible-node-labels.CORE.maximum-capacity":"100",
+             "yarn.scheduler.capacity.root.default.accessible-node-labels":"CORE",
+             "yarn.scheduler.capacity.root.default.accessible-node-labels.CORE.capacity":"20",
+             "yarn.scheduler.capacity.root.default.accessible-node-labels.CORE.maximum-capacity":"100",
+             "yarn.scheduler.capacity.root.stream.accessible-node-labels":"CORE",
+             "yarn.scheduler.capacity.root.stream.accessible-node-labels.CORE.capacity":"30",
+             "yarn.scheduler.capacity.root.stream.accessible-node-labels.CORE.maximum-capacity":"100",
+             "yarn.scheduler.capacity.root.batch.accessible-node-labels":"CORE",
+             "yarn.scheduler.capacity.root.batch.accessible-node-labels.CORE.capacity":"30",
+             "yarn.scheduler.capacity.root.batch.accessible-node-labels.CORE.maximum-capacity":"100"
+        },
+        "configurations": []
+    }
+]
+ENDOFCONFIGS
