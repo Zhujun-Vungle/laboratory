@@ -1,8 +1,0 @@
-run
-compile
-run
- last compile:run
-clean
-compile
-run
- last compile:run
